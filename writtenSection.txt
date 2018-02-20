@@ -1,28 +1,139 @@
 Answer each question in a written format
 
 1. What does semantic HTML mean?
+    Semantic HTML is a way of classifying and organizing the boxes that you used to build a website.
+They can be specialized for a purpose, such as an input box or button, used to denote writting, such as a h1 tag, or a way to break up your code into parts, like a section.
+The most common one is div, which is simply a placeholder, but a semantic element can be a span, a p selector, a footer and so on.
+The DOM then takes those and makes certain assumptions about what underlying code gets attach to each selector tag.
+So, if you put an input box, it will automatically add all the additional code that will make it so that you can add text into it and then capture that code without having to work about the heavily lifting.
+You'll still need to use event listeners, like onChange or onBlur, in that case but that's simply capturing the information the DOM has already given you.
+
 
 2. What is the box model?
+    It’s a way thinking about a website; essentially you think an entire site as just a series of boxes. 
+From there each box has certain attributes that can be used to change the size, shape, and relative position to other boxes. 
+From outside in these are margin, border, padding, and then the element itself.
+    The margin is the no-man’s land between it and the next box over. 
+These don’t overlap so if two boxes both have a margin of 5px, the distance between them will be 10px.
+    Border is the outline. You can make borders thick, thin, dotted, solids, grooved, transparent and so on. 
+It’s the fence around your box. Any styling, such as background color and styling start.
+    Padding is like margin, but on the inside. It puts the element away from the border and into the box. 
+It’s used to create very charming whitespace, that make the website easier to look at.
+    And, of course, the element itself which is and boxes within that box or text, button, inputs, and what have you.
+    You can also override where boxes are in relation to each other using positions, which can add some visual interest to the page. 
+Personally, I prefer flex-box because of its responsive design.
+
 
 3. What is the difference between IDs and Classes?
+    When CSS styles are applied and have conflicts, they have a method of determining which styles end up getting added to which selectors.
+The first way is that anything that's added lower in the CSS file trumps any styling above it.
+    On top of this you have IDs and Classes.
+    Classes are stylings that you apply to a large selection of selectors.
+Think of it about like a base layer of paint when painting a picture.
+You don't want the color of the canvas to effect you work and you may want to add a darker base layer to create a darker overall product.
+In that way, Classes can be used to get a unifying feel to certain sections of your app or across the whole thing.
+    IDs are personalized specifically to an item - they're the finishing touches to a selector. 
+They're typically used for one or two items at most and can set apart unique parts of your page.
+IDs always override Classes when it comes to which styling is applied because they're supposed to be specific to only one or two selectors.
+I suppose, theoretically, you can use IDs as freely as Classes but that's bad practice - if you've done your CSS correctly, you shouldn't have to do that.
+    If you do run into a conflict you can't resolve, you can always use ! to make a styling. Anything marked with ! ('bang' or 'important') will automatically override anything.
+Again, use those too freely is bad practice as it makes your code a mess and hard to read.
+
 
 4. What does the z-index do?
+    When your working on an app, you tend to think of your page in two dimensions.
+Like working with a graph you have an X and Y axis. The Y axis is the top and bottom and X axis is left and right. 
+While you may tend to think that way, that's not entirely true: there's also the Z axis, which is relative to the view and marks how close or far an object is.
+    The index of an selector is where it is on that axis, so the z-index is simply a marker of how closer or far away a certain thing is.
+    Now, this is most commonly used in parallax, which moves things at different rates based on their distance from the view, giving a sense of depth, 
+but you can also use it to have a div cover up a logo, and then have the div slide out of place, though that's not common.
+
 
 5. Summarize what the keyword 'this' is used for?
+    The keyword 'this', much like how it is in regular English, is all about context.
+For example, if I were to say 'this is terrible', you'd have no idea what I was talking about.
+Is this test terrible? Is life terrible? Is my breakfast terrible? You have no idea what I'm talking about.
+However, if we were at a party, and I motioned to the general building and the people and then said 'this is terrible', you'd know I was talking about the party.
+    'This' is coding works the same way. It's a placeholder, where 'this' can be changed out for whatever you're referring to.
+What you're referring to is called context. By default, 'this' points to whatever object its in. Ideally, that'd be an actual object, but it can also refer to the whole website, which can cause issues.
+If the default context doesn't work, you can always explicitedly bind it to an object, using the .bind, .call, or .apply. 
+You have to do this with functions in a React component because by default (or implicitedly), 'this' refers to the window, which doesn't have the components state.
+.bind you use when you want the 'this' to be static and never changing, .call and .apply are both temporay bindings, with the difference being that you put in the arguments as list and .apply you use an array when you invoke it with the temporary binding.
+Personally, I perfer the .apply just because its much clearer what you're binding and which arguments actually belong the function.
+
 
 6. What is a callback?
+    When you invoke a function you can put in another function as an argument instead of a variable.
+This is the callback function. From inside the first function, you can call the callback function.
+    This can mean that the first function manipulates the data in one way and then passes that into the callback to do something else with it.
+You can change out that second function based on what you want.
+    Now, personally, I've never created a function that uses a callback function, but I have used callback functions quite a bit.
+High order functions (.map, .filter. forEach) use them to determine how to sort, filter, or return items from whatever you put into them.
+With higher order functions they have a set purpose, the .sort sorts, but how its sorts, which criteria it uses, it set up by a callback function that you create.
+Additionally, you'll use them for server endpoints and middleware.
+
 
 7. What is a closure?
+    Closures are actually really cool. They're a way of using reference values, primitive values, and scope.
+The best way that I've used to understand the idea is multiple saves on the same video game.
+What one save does doesn't effect the other saves but they're still running through the same game, fighting the same enemies and running through the same areas.
+    Closures are like that: you set up a Class, which is like an object. This class can have variables and functions.
+You can then assign that Class a name like you would use a variable. You can then invoke functions off that variable.
+Now, if you have that function change a variable in that Class, it only changes for that specific class, leaving the others untouched.
+So, going back to the metaphor: that new Class is like a new saved game. Because any variables have local scope, they're treated indepently of each other.
+    Why don't you just create an object with those variables and methods on them? That's where the memory types come in.
+If you were to make a new object with a new method, that would take a ton of memory, because even though they did exactly the same thing, they'd take up different sectiosn of memory.
+By creating a Class, you're creating a single space in memory. When you create new Classes, their functions always reference the mother function, in the same slot of memory.
+The only additional use of memory is the variables is has, which are primitive and so have their own slots, but they take barely an space.
+
 
 8. How does prototype work?
+    Prototypes are functions that all things of a certain data type have access to. 
+So Arrays have access to all Array.prototype functions and all Strings have acess to all String.prototype functions.
+.map, .sort, .reverse are all examples of these Prototypes.
+    Essentially, these data types are specialized class that come with prebuilt functions.
+You can always add your own Prototypes, which is essentially what you're doing with closures or when you're building a React component.
+This can be useful if you need to be able to reverse a string multiple times and you don't want to have to invoke a function that you imported that you pass the string into.
+It may save you a few keystrokes, which can be a real time saver over the long run.
+
 
 9. What is MVC?
+    This is the cousin of the box model, but instead of just looking at the visual layout of a website, you're looking at dataflow.
+Its a way of thinking about how the user interacts with the site, so you have the view, what they see, the controller, the way they interact with it, and the model which handles the changes.
+So in this way, a user sees a button (the view), clicks it (controller) which fires a function that changes the page (model), which alters the page (the view).
+    The view determines the controller or how a user can interact with the site. 
+For instance, if no button to increase a counter is displayed, thene the user can click it and increase the counter.
+    The controller determines how the model changes the view. A nav bar is the quintessential example.
+What button you press on the nav bar changes where you end up going.
+    The model determines what view is displayed based on how the controller manipulates it.
+    So really, you're looking at the cycle of life but if it was a website and boring and not musical, with no talking animals.
+
 
 10. What is the component lifecycle?
+    The component lifecycle is the life of a component from the moment is starts to mount to the mount it unmounts.
+Like a real life, this is punctuated by events inbetween; points were the React talks to the virtual DOM and the virtual DOM interacts with the actual DOM.
+These are componentWillMount, componentDidMount, componentWillRecieveProps, componentWillUpdate, componentWillUnmount, etc.
+This allows you to trigger events, like an AJAX call that will then populate your component or a transition or animation.
+    Overall, an understanding of the lifecycle and its hooks allows you greater controller over what is happening and when in your app.
+
 
 11. What is REST?
+    REST is best practiec when it comes to API. Basically, that you should use $http requests as they were originally intended and don't break the trust of your user.
+That means that when you use .get, that you're getting information, and the same is true for .put, .delete, and .post.
+This allows people reading your code to be able to quickly understand what your server is doing and where it is going and that you don't add things with a .get.
+    REST is used to reminded coders to use common courtesy, because, apparently, its not so common.
+
 
 12. Name three ways of getting data from the URL using express
+    The first is params. Params are typically a number or string that's appended to the end of a URL.
+Params a small bits of information and usually correspond to an id or something along those lines.
+    The second way is through the body. This is typically used for bigger chunks of information so they're usually objects.
+They're usually used for static bodies of data, where you know the number and amount of keys in the object.
+    The final way is through queries. Queries are a blend of params and body. While params are small bits of information, queries are larger objects that change depending on a number of factors.
+You can tell what's a query by its syntax which is ?<property>=<value>, with the query object being {<property>:<value>}.
+Queries are cool because you can chain multiple of them together. So, ?city=springfield?state=AZ gives you an query object of {city: 'springfield',state: 'AZ'}.
+Because its so flexible you can use it instead of body if you don't exactly know what you're looking for and it makes a cleaning URL then just chaining even param you might need at some point.
+
 
 create table users (
 id serial,
@@ -34,8 +145,23 @@ email varchar(255)
 
 -Get all users:
 
+select * from users
+
+
 -Create a new user with the name of 'your name' and an email of 'fake@fake.com':
+
+insert into users (name, email)
+values ('your name', 'fake@fake.com')
+
 
 -Update the newly created user's name to 'Bobby Boy':
 
+update users
+set name = 'Bobby Boy'
+where id = 1
+
+
 -Delete the newly updated user:
+
+delete from users
+where id = 1
